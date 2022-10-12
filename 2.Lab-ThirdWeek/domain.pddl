@@ -1,48 +1,55 @@
 (define (domain wompusWorld)
-    (:requirements :strips :adl :typing)
+    (:requirements :strips)
     (:predicates
-        (adj ?room-1 ?room-2 - square)
-        (pit ?room - room)
-        (at ?what ?square)
-        (have ?who ?what)
-        (alive ?who))
+    (at ?what ?square)
+    (adj ?square-1 ?square-2)
+    (pit ?square)
+    (wumpus-in ?square)
+    (have ?who ?what)
+    (is-agent ?who)
+    (is-wumpus ?who)
+    (is-gold ?what)
+    (is-arrow ?what)
+    (dead ?who))
 
-    (:action move
-        :parameters (?who -agent ?from -room ?to -room)
-        :precondition (and (alive ?who)
+    
+    (:action move-agent
+        :parameters (?who ?from ?to)
+        :precondition (and  (is-agent ?who)
                             (at ?who ?from)
                             (adj ?from ?to)
-                            (not (pit ?to)))
-        :effect (and    (not (at ?who ?from))
-                        (at ?who ?to))
+                            (not (pit ?to))
+                            (not (wumpus-in ?to)))
+        :effect (and (not   (at ?who ?from))
+                            (at ?who ?to))
     )
-    (:action take
-        :parameters (?who - agent ?where -room ?what)
-        :precondition (and 
-                        (takebale ?what)
-                        (alive ?who)
-                        (at ?who ?where)
-                        (at ?what ?where)
-                    )
-        :effect (and 
-            (have ?who ?what)
-            (not (at ?what ?where))
-            )
 
+    (:action take
+        :parameters (?who ?what ?where)
+        :precondition (and (is-agent ?who)
+                            (at ?who ?where)
+                            (at ?what ?where))
+        :effect (and    
+                    (have ?who ?what)
+                    (not(at ?what ?where)))    
     )
+    
+
     (:action shoot
-        :parameters (?who -agent ?where -room ?arrow -arrow ?victim -wompus ?whereVictim -room)
-        :precondition (and 
-                        (alive ?who)
-                        (have ?who ?with-arrow)
-                        (wompus  ?victim)
-                        (alive ?victim)
-                        (at ?victim ?whereVictim)
-                        (adj ?where ?whereVictim))
-        :effect (and 
-                    (dead ?victim)
-                    (not (alive ?victim))
-                    (not (have ?who ?with-arrow))
-                    (not (alive ?victim)))
+        :parameters (?who ?where ?with-what ?victim ?where-victim)
+        :precondition (and (is-agent ?who)
+                            (have ?who ?with-what)
+                            (is-arrow ?with-what)
+                            (at ?who ?where)
+                            (is-wumpus ?victim)
+                            (at ?victim ?where-victim)
+                            (adj ?where ?where-victim))
+
+    :effect (and 
+                (dead ?victim)
+                (not (wumpus-in ?where-victim))
+                (not (have ?who ?with-what))
+            )
     )
+    
 )

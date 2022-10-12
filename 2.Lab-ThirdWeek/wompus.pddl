@@ -1,54 +1,25 @@
 (define (problem wompusWorld-a)
-        (:domain wompusWorld)
-        (:objects   room1-1 room1-2 room1-3
-                    room2-1 room2-2 room2-3 -room
-                    gold    wompus  agent 
-                    arrow   
-        )
-        (:init
-            ;Room 1-1 
-            (adj (room1-1 room1-2))
-            (adj (room1-1 room2-1))
-            ;Room 1-2
-            (adj (room1-2 room1-3))
-            (adj (room1-2 room1-1))
-            (adj (room1-2 room2-2))
-            ;Room 1-3
-            (adj (room1-3 room1-2))
-            (adj (room1-3 room2-3))
-            ;Room 2-1
-            (adj (room2-1 room2-2))
-            (adj (room2-1 room1-1))
-            ;Room 2-2
-            (adj (room2-2 room2-1))
-            (adj (room2-2 room1-2))
-            (adj (room2-2 room2-3))
-            ;Room 2-3
-            (adj (room2-3 room2-2))
-            (adj (room2-3 room1-3))
-            ;Pit location
-            (pit room1-2)
-            ;at gold
-            (at gold room1-3)
-            ;Wompus location
-            (at wompus room2-3)
-            ;Agent location
-            (at agent room1-1)
-            ;Agent with arrow
-            (have agent arrow)
-            ;Agent alive
-            (alive agent)
-            ;Wompus alive
-            (alive wompus)
-            (is-arrow arrow)
-            
-
-
-        )
-        (:goal (and
-                    (have agent gold)
-                    (alive agent)
-                    (not (dead agent))  
-        ))
-
-)
+    (:domain wompusWorld)
+    (:objects sq-1-1 sq-1-2 sq-1-3
+            sq-2-1 sq-2-2 sq-2-3
+            the-gold the-arrow
+            agent wumpus)
+    (:init (adj sq-1-1 sq-1-2) (adj sq-1-2 sq-1-1)
+            (adj sq-1-2 sq-1-3) (adj sq-1-3 sq-1-2)
+            (adj sq-2-1 sq-2-2) (adj sq-2-2 sq-2-1)
+            (adj sq-2-2 sq-2-3) (adj sq-2-3 sq-2-2)
+            (adj sq-1-1 sq-2-1) (adj sq-2-1 sq-1-1)
+            (adj sq-1-2 sq-2-2) (adj sq-2-2 sq-1-2)
+            (adj sq-1-3 sq-2-3) (adj sq-2-3 sq-1-3)
+            (pit sq-1-2)
+            (is-gold the-gold)
+            (at the-gold sq-1-3)
+            (is-agent agent)
+            (at agent sq-1-1)
+            (is-arrow the-arrow)
+            (have agent the-arrow)
+            (is-wumpus wumpus)
+            (at wumpus sq-2-3)
+            (wumpus-in sq-2-3))
+    (:goal (and (have agent the-gold)))
+    )
