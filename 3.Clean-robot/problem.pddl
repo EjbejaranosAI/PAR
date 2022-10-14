@@ -35,7 +35,7 @@
 
         )
         (:goal (and    
-                (at Robot ofi-0-4) 
+                (at Robot ofi-0-9) 
                 (box-in BoxRed ofi-0-6)(box-in BoxBlue ofi-0-8)
                 (not (is-dirty ofi-0-1))(not (is-dirty ofi-0-2))(not (is-dirty ofi-0-3))
                 (not (is-dirty ofi-0-4))(not (is-dirty ofi-0-5))(not (is-dirty ofi-0-6))

@@ -13,7 +13,7 @@
             
         )
     (:action clean-office
-        :parameters (?who ?square ?box)
+        :parameters (?square ?who ?box)
         :precondition (and  (is-dirty ?square)
                             (not (is-clean ?square)) 
                             (not (box-in ?box ?square))  
@@ -22,7 +22,7 @@
     )
 
     (:action move_to_office
-        :parameters (?who ?from ?to ?box)
+        :parameters (?from ?to ?who ?box)
         :precondition (and
                             (is-robot ?who)
                             (at ?who ?from)
@@ -31,7 +31,7 @@
         :effect (and (not (at ?who ?from)) (at ?who ?to))
     )
     (:action push_box
-        :parameters (?who ?from ?to ?box)
+        :parameters (?from ?box ?to ?who)
         :precondition (and
                             (is-robot ?who)
                             (at ?who ?from)
