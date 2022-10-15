@@ -1,4 +1,4 @@
-(define (problem cleanTask2)
+(define (problem cleanTask2_2)
         (:domain CleanerRobotTask2)
         (:objects   BoxBlue BoxRed 
                     ofi1 ofi2 

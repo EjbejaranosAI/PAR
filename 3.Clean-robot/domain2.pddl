@@ -6,7 +6,8 @@
             (box-in ?box ?x) 
             (is-clean ?x) 
             (is-dirty ?x)
-            (adj ?x ?y)                                          
+            (adj ?x ?y)          
+            (is-empty ?x)                                 
         )
 
     (:action move_to_office
@@ -28,6 +29,7 @@
         :precondition (and
                             (robot-in ?x)
                             (is-dirty ?x)
+                            (is-empty ?x)
                         )
         :effect (and (not (is-dirty ?x)) (is-clean ?x))
     )
@@ -37,10 +39,11 @@
         :precondition (and
                             (robot-in ?x)                 
                             (adj ?x ?y)
-                            (box-in ?box ?x)
-                        ) 
-        :effect (and (not (box-in ?box ?x))
-                     (box-in ?box ?y)
-                     (robot-in ?y))
+                            (not(is-empty ?x))
+                            (is-empty ?y)) 
+        :effect (and        (box-in ?box ?y)
+                            (not (box-in ?box ?x))
+                            (not (is-empty ?y))
+                            (is-empty ?x) )
     )
 )
