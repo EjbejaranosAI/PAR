@@ -36,7 +36,8 @@
             :parameters (?box ?from ?to)
             :precondition (and 
                                 (box-at ?box ?from) 
-                                (adj ?from ?to) 
+                                (or (adj ?from ?to)
+                                    (adj ?to ?from)) 
                                 (robot-at ?from) 
                                 (not (is-empty ?from)) 
                                 (is-empty ?to) 
