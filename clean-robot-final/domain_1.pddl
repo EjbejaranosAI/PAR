@@ -23,7 +23,9 @@
             :parameters (?from ?to)
             :precondition (and  
                                 (robot-at ?from) 
-                                (adj ?from ?to))
+                                (or (adj ?from ?to)
+                                    (adj ?to ?from))
+                           )
             :effect (and 
                         (not(robot-at ?from))
                         (robot-at ?to)

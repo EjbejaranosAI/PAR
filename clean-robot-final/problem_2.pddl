@@ -1,6 +1,6 @@
-(define (problem cleanTask_1)
+(define (problem cleanTask_2)
  (:domain CleanerRobotTask)
-   (:objects    box-1 box-2  robot 
+   (:objects    boxRed boxBlue  boxGreen robot 
                 ofi-1 ofi-2 ofi-3 
                 ofi-4 ofi-5 ofi-6
                 ofi-7 ofi-8 ofi-9)
@@ -26,20 +26,24 @@
                 (is-dirty ofi-7) (is-dirty ofi-8) (is-dirty ofi-9)
 
                 ;Empty offices and box positions
-                (is-empty ofi-1) (is-empty ofi-2) (is-empty ofi-3)
-                (is-empty ofi-4) (box-at box-1 ofi-5) (box-at box-2 ofi-6)
+                (box-at boxGreen ofi-1) (is-empty ofi-2) (is-empty ofi-3)
+                (is-empty ofi-4) (box-at boxBlue ofi-5) (box-at boxRed ofi-6)
                 (is-empty ofi-7) (is-empty ofi-8) (is-empty ofi-9))
 
-          (:goal (and 
-                    (box-at box-1 ofi-6) 
-                    (box-at box-2 ofi-8) 
-                    (robot-at ofi-9)
-                    (is-clean ofi-1) 
-                    (is-clean ofi-2) 
-                    (is-clean ofi-3)
-                    (is-clean ofi-4) 
-                    (is-clean ofi-5) 
-                    (is-clean ofi-6)
-                    (is-clean ofi-7) 
-                    (is-clean ofi-8) 
-                    (is-clean ofi-9))))
+    (:goal (and 
+              (box-at boxRed ofi-6) 
+              (box-at boxBlue ofi-8) 
+              (box-at boxGreen ofi-1)
+              (robot-at ofi-9)
+              (is-clean ofi-1) 
+              (is-clean ofi-2) 
+              (is-clean ofi-3)
+              (is-clean ofi-4) 
+              (is-clean ofi-5) 
+              (is-clean ofi-6)
+              (is-clean ofi-7) 
+              (is-clean ofi-8) 
+              (is-clean ofi-9))
+    
+    )
+  )
