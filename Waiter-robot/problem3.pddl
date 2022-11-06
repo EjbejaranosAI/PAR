@@ -11,7 +11,6 @@
     (isLocation ALA)
 
     (Adjacent BTA AUA)
-    (Adjacent PUA AUA)
     (Adjacent AMA AUA)
     (Adjacent AMA ALA)
     (Adjacent PLA ALA)
@@ -19,7 +18,6 @@
     (Adjacent PUA PMA)
 
     (Adjacent AUA BTA)
-    (Adjacent AUA PUA)
     (Adjacent AUA AMA)
     (Adjacent ALA AMA)
     (Adjacent ALA PLA)
@@ -33,7 +31,7 @@
 
     (at p BTA)
     (at c PMA)
-    (at a BTA)
+    (at a PMA)
 
 
   )
