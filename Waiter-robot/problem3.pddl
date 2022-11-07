@@ -35,5 +35,5 @@
 
 
   )
-  (:goal (and(served c)(at a BTA)))
+  (:goal (and(served c)(at a BTA)(clean PMA c)))
 )

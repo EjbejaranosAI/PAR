@@ -12,6 +12,7 @@
    (isCustomer ?x) 
    (isKitchen ?l) 
    (isAgent ?x)
+   (clean ?x ?y)
     )
   (:action Pick-up
     :parameters (?l ?p ?a) 
@@ -20,8 +21,20 @@
   )  
   (:action Present
     :parameters (?l ?p ?a ?c) 
-    :precondition (and (isPlate ?p) (isAgent ?a)(isLocation ?l)(isCustomer ?c)(not(served ?c))(holding ?a ?p)(Hasfood ?p)(at ?a ?l)(at ?c ?l))
-    :effect (and (not (holding ?a ?p)) (served ?c))
+    :precondition (and 
+                      (not(served ?c)) 
+                      (isPlate ?p) 
+                      (isAgent ?a)
+                      (isLocation ?l)
+                      (isCustomer ?c)
+                      (holding ?a ?p)
+                      (Hasfood ?p)
+                      (at ?a ?l)
+                      (at ?c ?l))
+
+    :effect (and (not(holding ?a ?p))
+                  (not(Hasfood ?p))
+                    (served ?c))
   )
   
   (:action Fill
@@ -33,5 +46,20 @@
     :parameters (?l1 ?l2 ?a) 
     :precondition (and (isLocation ?l1) (isLocation ?l2)(isAgent ?a)(Adjacent ?l1 ?l2)(at ?a ?l1))
     :effect (and (not(at ?a ?l1))(at ?a ?l2))
+  )
+  (:action Collect
+    :parameters (?l ?p ?a ?c) 
+    :precondition (and 
+                      (isPlate ?p)
+                      (isAgent ?a)
+                      (isLocation ?l)
+                      (isCustomer ?c)
+                      (served ?c) 
+                      (at ?a ?l)
+                      (at ?c ?l)
+                      (not(holding ?a ?p))
+                      (not(Hasfood ?p))
+                  )
+    :effect (and (holding ?a ?p)(clean ?l ?c))
   )
 )

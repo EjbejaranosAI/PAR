@@ -39,5 +39,5 @@
 
 
   )
-  (:goal (and(served c1)(served c2)(at a BTA)))
+  (:goal (and(served c1)(served c2)(at a BTA)(clean PMA c1)(clean AMA c2)))
 )

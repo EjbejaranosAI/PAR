@@ -9,6 +9,7 @@
     (isLocation AMA)
     (isLocation PLA)
     (isLocation ALA)
+    
 
     (Adjacent BTA AUA)
     (Adjacent PUA AUA)
@@ -33,9 +34,11 @@
 
     (at p BTA)
     (at c PMA)
+   
     (at a BTA)
+  
 
 
   )
-  (:goal (and(served c)(at a BTA)))
+  (:goal (and(served c)(at a BTA)(clean PMA c)))
 )
