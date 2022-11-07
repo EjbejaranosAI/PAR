@@ -19,13 +19,7 @@
     (Adjacent PLA PMA)
     (Adjacent PUA PMA)
 
-    (Adjacent AUA BTA)
-    (Adjacent AUA PUA)
-    (Adjacent AUA AMA)
-    (Adjacent ALA AMA)
-    (Adjacent ALA PLA)
-    (Adjacent PMA PLA)
-    (Adjacent PMA PUA)
+
 
     (isPlate p) 
     (isCustomer c)
