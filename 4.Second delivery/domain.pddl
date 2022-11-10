@@ -31,7 +31,7 @@
   )
   (:action Move
     :parameters (?l1 ?l2 ?a) 
-    :precondition (and (isLocation ?l1) (isLocation ?l2)(isAgent ?a)(Adjacent ?l1 ?l2)(at ?a ?l1))
+    :precondition (and (isLocation ?l1) (isLocation ?l2)(isAgent ?a)(or (Adjacent ?l1 ?l2)(Adjacent ?l2 ?l1))(at ?a ?l1))
     :effect (and (not(at ?a ?l1))(at ?a ?l2))
   )
 )
