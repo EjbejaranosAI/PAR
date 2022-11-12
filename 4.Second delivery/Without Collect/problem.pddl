@@ -11,7 +11,6 @@
     (isLocation ALA)
 
     (Adjacent BTA AUA)
-    (Adjacent PUA AUA)
     (Adjacent AMA AUA)
     (Adjacent AMA ALA)
     (Adjacent PLA ALA)
