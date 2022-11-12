@@ -1,5 +1,5 @@
 (define (problem hard1)
-  (:domain strips-sliding-tile)
+  (:domain strips-sliding-tile2)
   (:objects p c a BTA PUA AUA PMA AMA PLA ALA)
   (:init
     (isLocation BTA)

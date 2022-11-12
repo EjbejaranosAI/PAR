@@ -1,5 +1,5 @@
 
-(define (domain strips-sliding-tile)
+(define (domain strips-sliding-tile2)
   (:requirements :strips :adl)
   (:predicates
    (Adjacent ?x ?y)
