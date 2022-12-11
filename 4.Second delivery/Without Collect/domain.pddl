@@ -1,5 +1,5 @@
 
-(define (domain strips-sliding-tile)
+(define (domain waiter_domain2)
   (:requirements :strips :adl)
   (:predicates
    (Adjacent ?x ?y)

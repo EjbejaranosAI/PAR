@@ -1,0 +1,134 @@
+
+%% Test script for Books predictor with fuzzy system 
+
+% Inputs: Author visibility, Publisher prestige, Previous sales, Period of
+% year to publicated
+
+% Output: Number of books to print
+
+%% Ranges
+% Auhtor visibility: [0 to 2000] 
+% Publisher prestige: [1 to 200] - Number of years of the publisher
+% Previous sales: [0 to 10000] - Number of books sold
+% Period of year: [0 to 12] / Number of month per season
+
+
+% Load the fis file
+fuzzy_file = 'BookSalesPredictor_final_32rules.fis';
+fuzzy_file_sugeno = 'BookSalesPredictor_final_sugeno.fis';
+
+fis = readfis(fuzzy_file);
+fis_sugeno = readfis(fuzzy_file_sugeno);
+
+% Create vector with cases
+WorstCase = [0,1,700,7];          % [author, publisher, p.sales, period]
+BestCase = [2000,200,10000,1];  % [author, publisher, p.sales, period]
+
+Case1_winter = [1000,200,9000,1];  % [author, publisher, p.sales, period]
+Case2_winter = [500,200,9000,1];  % [author, publisher, p.sales, period]
+
+
+Case1_summer = [1000,200,9000,5];  % [author, publisher, p.sales, period]
+Case2_summer = [500,200,9000,5];  % [author, publisher, p.sales, period]
+
+
+Case3 = [1000,180,8000,1];  % [author, publisher, p.sales, period]
+Case4 = [1000,90,8000,1];  % [author, publisher, p.sales, period]
+Case5 = [1000,10,8000,1];  % [author, publisher, p.sales, period]
+
+
+Case6 = [1000,10,9000,1];  % [author, publisher, p.sales, period]
+Case7 = [1000,10,7000,1];  % [author, publisher, p.sales, period]
+Case8 = [1000,10,4000,1];  % [author, publisher, p.sales, period]
+Case9 = [1000,10,1000,1];  % [author, publisher, p.sales, period]
+
+Case10 = [1000,10,9000,5];  % [author, publisher, p.sales, period]
+Case11 = [1000,10,7000,5];  % [author, publisher, p.sales, period]
+Case12 = [1000,10,4000,5];  % [author, publisher, p.sales, period]
+Case13 = [1000,10,1000,5];  % [author, publisher, p.sales, period]
+
+
+
+% Testing cases per period of publication
+January = [1000,90,4000,1];  % [author, publisher, p.sales, period]
+Febrery = [1000,90,4000,2];  % [author, publisher, p.sales, period]
+March = [1000,90,4000,3];  % [author, publisher, p.sales, period]
+April = [1000,90,4000,4];  % [author, publisher, p.sales, period]
+May = [1000,90,4000,5];  % [author, publisher, p.sales, period]
+June = [1000,90,4000,6];  % [author, publisher, p.sales, period]
+July = [1000,90,4000,7];  % [author, publisher, p.sales, period]
+August = [1000,90,4000,8];  % [author, publisher, p.sales, period]
+September = [1000,90,4000,9];  % [author, publisher, p.sales, period]
+October = [1000,90,4000,10];  % [author, publisher, p.sales, period]
+November = [1000,90,100,11];  % [author, publisher, p.sales, period]
+December = [1000,90,100,12];  % [author, publisher, p.sales, period]
+
+
+
+%Gettting prediction
+PredictWorstCase = evalfis(fis,WorstCase)
+PredictBesttCase = evalfis(fis,BestCase)
+
+PredictCase1_winter = evalfis(fis,Case1_winter)
+PredictCase2_winter = evalfis(fis,Case2_winter)
+
+PredictCase1_summer = evalfis(fis,Case1_summer)
+PredictCase2_summer = evalfis(fis,Case2_summer)
+
+
+PredictCase3 = evalfis(fis,Case3)
+PredictCase4 = evalfis(fis,Case4)
+PredictCase5 = evalfis(fis,Case5)
+
+PredictCase6 = evalfis(fis,Case6)
+PredictCase7 = evalfis(fis,Case7)
+PredictCase8 = evalfis(fis,Case8)
+PredictCase9 = evalfis(fis,Case9)
+PredictCase10 = evalfis(fis,Case10)
+PredictCase11 = evalfis(fis,Case11)
+PredictCase12 = evalfis(fis,Case12)
+PredictCase13 = evalfis(fis,Case13)
+
+
+
+January_mandani = evalfis(fis,January)
+January_sugeno = evalfis(fis_sugeno,January)
+
+Febrery_mandani = evalfis(fis,Febrery)
+Febrery_sugeno = evalfis(fis_sugeno,Febrery)
+
+March_mandani = evalfis(fis,March)
+March_sugeno = evalfis(fis_sugeno,March)
+
+
+April_mandani = evalfis(fis,April)
+April_sugeno = evalfis(fis_sugeno,April)
+
+May_mandani = evalfis(fis,May)
+May_sugeno = evalfis(fis_sugeno,May)
+
+June_mandani = evalfis(fis,June)
+June_sugeno = evalfis(fis_sugeno,June)
+
+July_mandani = evalfis(fis,July)
+July_sugeno = evalfis(fis_sugeno,July)
+
+August_mandani = evalfis(fis,August)
+August_sugeno = evalfis(fis_sugeno,August)
+
+September_mandani = evalfis(fis,September)
+September_sugeno = evalfis(fis_sugeno,September)
+
+November_mandani = evalfis(fis,November)
+November_sugeno = evalfis(fis_sugeno,November)
+
+December_mandani = evalfis(fis,December)
+December_sugeno = evalfis(fis_sugeno,December)
+
+
+
+
+
+
+
+
